@@ -5,16 +5,16 @@ const Login = ({ setUser }) => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", form);
-      setUser(res.data.user);
-      window.location.href = "https://www.youtube.com";
-    } catch (error) {
-      setError("Login failed. Please check your credentials.");
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, form);
+    setUser(res.data.user);
+    window.location.href = "https://www.youtube.com";
+  } catch (error) {
+    setError("Login failed. Please check your credentials.");
+  }
+};
 
   return (
     <div>
